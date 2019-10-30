@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.directive  自定义指令</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>Vue.directive  自定义指令</h1>
+  <hr>
+  <div id="app">
+    <div v-xy="color">{{num}}</div>
+    <p><button @click="add">ADD</button></p>
+    <p><button @click="unbind">解绑</button></p>
+  </div>
+
+  <script>
+    // 以匿名函数传入
+    // Vue.directive("xy", function(el, binding){
+    //   console.log(el)
+    //   console.log(binding)
+    //   el.style = "color:" + binding.value
+    // })
+
+    Vue.directive("xy", {
+      bind:function(el,binding){//被绑定
+        console.log('1 - bind');
+        el.style = "color:" + binding.value
+      },
+      inserted:function(){//绑定到节点
+        console.log('2 - inserted');
+      },
+      update:function(){//组件更新
+        console.log('3 - update');
+      },
+      componentUpdated:function(){//组件更新完成
+        console.log('4 - componentUpdated');
+      },
+      unbind:function(){//解绑
+        console.log('5 - unbind');
+      }
+    })
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num:10,
+        color: 'green'
+      },
+      methods: {
+        add: function(){
+          this.num++;
+        },
+        unbind: function(){
+          this.$destroy()
+        }
+      }
+    })
+  </script>
+</body>
+</html>
