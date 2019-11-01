@@ -4,34 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Component-2</title>
+  <title>Component-3</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <h1>Component-2</h1>
+  <h1>Component-3</h1>
   <hr>
   <div id="app">
     {{message}}
-    <xie here="China"></xie>
-    <yan from-here="China"></yan>
+    <xy></xy>
   </div>
   <script>
+    var city = {
+      template:`<h1 style="color: red">xy from China</h1>`
+    }
+    var xyComponent = {
+      template:`<div>
+      <h1 style="color: green">xy from China</h1>
+      <city></city>
+      </div>`,
+      components: {
+        "city": city
+      }
+    }
     var app = new Vue({
       el: '#app',
       data: {
         message: 'Hello World!'
       },
       components:{
-        "xie":{
-          template:`<h1 style="color: green">xie from {{here}}</h1>`,
-          props: ['here']
-        },
-        "yan":{
-          template:`<h1 style="color: green">yan from {{fromHere}}</h1>`,
-          props: ['fromHere']
-        }
+        "xy": xyComponent
       }
     })
   </script>
 </body>
 </html>
+
+<!-- 全局的组件也必须在Vue的实例中定义，注意 -->
