@@ -4,26 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>HelloWorld</title>
+  <title>propsData</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <h1>HelloWorld</h1>
+  <h1>propsData</h1>
   <hr>
   <header></header>
   <script>
     var header_a = Vue.extend({
-      template: `<p>{{demo}}</p>`,
+      template: `<p>{{demo}}-{{a}}</p>`,
       data: function() {
         return{
           demo: '我是一个实验'
         }
       },
-      props:{
-         
-      }
+      props:[
+        'a'
+      ]
     })
-    new header_a().$mount('header')
+    new header_a({propsData:{a:1}}).$mount('header')
   </script>
 </body>
 </html>

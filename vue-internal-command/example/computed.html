@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>computed option</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>computed option</h1>
+  <hr>
+  <div id="app">
+    <p>{{newPrice}}</p>
+    <ul>
+      <li v-for="item in reverseList">{{item.title}}-{{item.date}}</li>
+    </ul>
+  </div>
+
+  <script>
+    var newList = [
+      {title: '我', date: '2019-11-01'},
+      {title: '是', date: '2019-11-02'},
+      {title: '谢', date: '2019-11-03'},
+      {title: '妍', date: '2019-11-04'}
+    ]
+    var app = new Vue({
+      el: '#app',
+      data: {
+        price: 100,
+        newList: newList
+      },
+      computed:{
+        newPrice: function(){
+          return this.price = '￥' + this.price + '元'
+        },
+        reverseList: function(){
+          return this.newList.reverse()
+        }
+      }
+    })
+  </script>
+</body>
+</html>

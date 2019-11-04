@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>watch option</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <h1>watch option</h1>
+  <hr>
+  <div id="app">
+    <p>温度：{{temperature}}</p>
+    <p>建议：{{suggestion}}</p>
+    <button @click="higher">higher</button>
+    <button @click="lower">lower</button>
+  </div>
+
+  <script>
+    var suggestion = [
+      '短袖T恤','夹克外套','棉袄羽绒服'
+    ]
+    var app = new Vue({
+      el: '#app',
+      data: {
+        temperature: 25,
+        suggestion: "短袖T恤"
+      },
+      methods:{
+        higher: function(){
+          this.temperature++
+        },
+        lower: function(){
+          this.temperature--
+        }
+      },
+      // watch:{
+      //   temperature: function(newVal, oldValue){
+      //     if(newVal>=24){
+      //       this.suggestion = suggestion[0]
+      //     }else if(newVal<24 && newVal > 0){
+      //       this.suggestion = suggestion[1]
+      //     }else{
+      //       this.suggestion = suggestion[2]
+      //     }
+      //   }
+      // }
+    })
+    app.$watch('temperature', function(newVal, oldValue){
+      if(newVal>=24){
+        this.suggestion = suggestion[0]
+      }else if(newVal<24 && newVal > 0){
+        this.suggestion = suggestion[1]
+      }else{
+        this.suggestion = suggestion[2]
+      }
+    })
+  </script>
+</body>
+</html>
+
+<!-- 要用newVal，不能用this.temperature -->
