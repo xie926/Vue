@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>example methods demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+  <h1>example methods demo</h1>
+  <hr>
+  <div id="app">
+    <p>{{num}}</p>
+    <button @click="add()">ADD</button>
+    <!-- <button @click="reduce()">Reduce</button> 这种方式会报错-->
+  </div>
+  <p><button onclick="reduce()">REDUCE</button></p>
+  <p><button onclick="reduceOnce()">REDUCEONCE</button></p>
+  <p><button onclick="off()">OFF</button></p>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data:{
+        num: 1
+      },
+      methods:{
+        add: function(){
+          this.num++
+        }
+      }
+    })
+
+    app.$on('reduce',function(){
+      this.num--
+    })
+    app.$once("reduceOnce", function(){
+      this.num--
+    })
+    function reduce(){
+      console.log('reduce方法被执行了')
+      app.$emit('reduce')
+    }
+
+    function reduceOnce(){
+      console.log('reduceOnce方法被执行了')
+      app.$emit('reduceOnce')
+    }
+    function off(){
+      app.$off('reduce')
+    }
+  </script>
+</body>
+</html>
