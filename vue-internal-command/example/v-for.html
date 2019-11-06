@@ -18,7 +18,7 @@
     </ul>
     <hr>
     <ul>
-      <li v-for="(student,index) in sortStudent">
+      <li v-for="(student,index) in sortStudent" :key="index">
         {{index}}：{{student.name}} - {{student.age}}
       </li>
     </ul>
