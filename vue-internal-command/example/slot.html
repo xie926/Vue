@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Slot content extend Demo</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 </head>
@@ -12,10 +12,37 @@
   <h1>Slot content extend Demo</h1>
   <hr>
   <div id="app">
-    <XY></XY>
+    <xy>
+      <span slot="blogUrl">{{xyData.blogUrl}}</span>
+      <span slot="netName">{{xyData.netName}}</span>
+      <span slot="skill">{{xyData.skill}}</span>
+    </xy>
   </div>
+  <template id="temp">
+    <div>
+      <p>博客地址:<slot name="blogUrl"></slot></p>
+      <p>博主姓名:<slot name="netName"></slot></p>
+      <p>博主技能:<slot name="skill"></slot></p>
+    </div>
+  </template>
+
   <script>
-    
+    var xy = {
+      template: '#temp'
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        xyData:{
+          blogUrl: 'http://jspang.com',
+          netName: 'xieyan',
+          skill: 'Web前端'
+        }
+      },
+      components:{
+        "xy": xy
+      }
+    })
   </script>
 </body>
 </html>
