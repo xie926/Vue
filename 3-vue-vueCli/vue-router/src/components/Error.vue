@@ -1,16 +1,15 @@
 <template>
   <div>
     <h1>{{msg}}</h1>
-    <p>{{$route.params.newsID}}-{{$route.params.newsTitle}}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'params',
+  name: 'Error',
   data(){
     return{
-      msg: 'I am params page'
+      msg: 'Error 404'
     }
   }
 }
