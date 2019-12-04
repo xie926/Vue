@@ -1,0 +1,94 @@
+{
+  "school": {
+    "students": [
+      {
+        "name": "方毅",
+        "sex": "男",
+        "age": 21,
+        "class": 1,
+        "Chinese": 100,
+        "Math": 90,
+        "English": 88,
+        "TotalPoint": 278
+      },
+      {
+        "name": "黎倩",
+        "sex": "女",
+        "age": 20,
+        "class": 1,
+        "Chinese": 98,
+        "Math": 80,
+        "English": 75,
+        "TotalPoint": 253
+      },
+      {
+        "name": "陈二",
+        "sex": "男",
+        "age": 22,
+        "class": 2,
+        "Chinese": 70,
+        "Math": 60,
+        "English": 50,
+        "TotalPoint": 180
+      },
+      {
+        "name": "邓珊",
+        "sex": "女",
+        "age": 22,
+        "class": 2,
+        "Chinese": 72,
+        "Math": 68,
+        "English": 90,
+        "TotalPoint": 230
+      },
+      {
+        "name": "李四",
+        "sex": "男",
+        "age": 23,
+        "class": 3,
+        "Chinese": 88,
+        "Math": 72,
+        "English": 90,
+        "TotalPoint": 250
+      },
+      {
+        "name": "何武",
+        "sex": "男",
+        "age": 20,
+        "class": 3,
+        "Chinese": 75,
+        "Math": 80,
+        "English": 60,
+        "TotalPoint": 215
+      },
+      {
+        "name": "冯柳",
+        "sex": "女",
+        "age": 20,
+        "class": 4,
+        "Chinese": 100,
+        "Math": 99,
+        "English": 88,
+        "TotalPoint": 287
+      }
+    ],
+    "teacher": [
+      {
+        "class": 1,
+        "name": "Miss Lee"
+      },
+      {
+        "class": 2,
+        "name": "Miss Gao"
+      },
+      {
+        "class": 3,
+        "name": "Mr Fang"
+      },
+      {
+        "class": 4,
+        "name": "Miss wu"
+      }
+    ]
+  }
+}
