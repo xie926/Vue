@@ -111,6 +111,7 @@ export default {
     selectMenu (index, event) {
       // console.log(event)
       // this.currentIndex = index
+      console.log(this.currentIndex)
       let foodList = this.$refs.foodList
       let el = foodList[index] // 菜系的li
       // 被添加betterScroll 才可以添加其它方法, params1 DOM元素,params2 滚动完成时间

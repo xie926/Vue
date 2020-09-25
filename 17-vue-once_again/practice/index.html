@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    .classA{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item,index) in movies" @click="change(index)" :class="{'classA': index === idx? true : false}">{{index}}-{{item}}</li>
+    </ul>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        idx:0,
+        movies: ['海王','胡桃夹子','少年的你'],
+        classA: 'classA'
+      },
+      methods:{
+        change: function(index){
+          this.idx = index
+        }
+      }
+    })
+  </script>
+</body>
+</html>

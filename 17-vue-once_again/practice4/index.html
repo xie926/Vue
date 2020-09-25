@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HelloWorld</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <cpn :number1="num1" :number2="num2" @changednum1="changeNum1" @changednum2="changeNum2"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h1>parentData：{{number1}}</h1>
+      <h1>childData: {{dnumber1}}</h1>
+      <!-- <input type="text" v-model="dnumber1"> -->
+      <input type="text" :value="dnumber1" @input="changeDnumber1">
+      <h1>parentData：{{number2}}</h1>
+      <h1>childData: {{dnumber2}}</h1>
+      <!-- <input type="text" v-model="dnumber2"> -->
+      <input type="text" :value="dnumber2" @input="changeDnumber2">
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      data(){
+        return{
+          dnumber1: this.number1,
+          dnumber2: this.number2
+        }
+      },
+      methods:{
+        changeDnumber1(e){
+          this.dnumber1 = e.target.value
+          this.dnumber2 = this.dnumber1 * 100
+          // this.$emit('changednum1', this.dnumber1,this.dnumber2) 这个方法存在缺陷
+          this.$emit('changednum1', this.dnumber1)
+          this.$emit('changednum2', this.dnumber2)
+        },
+        changeDnumber2(e){
+          this.dnumber2 = e.target.value
+          this.$emit('changednum2', this.dnumber2)
+          this.dnumber1 = this.dnumber2 / 100
+          this.$emit('changednum1', this.dnumber1)
+        }
+      },
+      props: {
+        number1:{
+          type: Number
+        },
+        number2:{
+          type: Number
+        }
+      }
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num1: 0,
+        num2: 1
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        changeNum1(value1){
+          console.log(1)
+          this.num1 = parseFloat(value1)
+        },
+        changeNum2(value){
+          console.log(2)
+          this.num2 = parseFloat(value)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

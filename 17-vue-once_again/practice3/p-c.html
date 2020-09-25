@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HelloWorld</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    {{message}}
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h1 v-for="item in cmovies">{{item}}</h1>
+      <h2>{{cmessage}}</h2>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      data(){
+        return {}
+      },
+      props:{
+        cmovies: Array,
+        cmessage: {
+          type: String,
+          default: '222',
+          isRequired: true
+        }
+      }
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello World!',
+        movies: ['111','222','333']
+      },
+      components:{
+        cpn
+      }
+    })
+  </script>
+</body>
+</html>

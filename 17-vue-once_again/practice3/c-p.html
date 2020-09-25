@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HelloWorld</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <cpn @itemclick="cpnClick"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      data(){
+        return {
+          categories: [
+            {id: 1, name: '111'},
+            {id: 2, name: '122'},
+            {id: 3, name: '333'}
+          ]
+        }
+      },
+      methods: {
+        btnClick(item){
+          this.$emit('itemclick', item)
+        }
+      }
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello World!',
+        movies: ['111','222','333']
+      },
+      components:{
+        cpn
+      },
+      methods: {
+        cpnClick(item){
+          console.log(item)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
